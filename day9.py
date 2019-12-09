@@ -147,58 +147,13 @@ class IntcodeComputer:
 
     return (opcode, nargs, modes)
 
-# -----------------------------------------------
-
-def try_sequence_part1(phase_settings, program):
-
-  last_output = 0
-  for phase in phase_settings:
-    computer = IntcodeComputer(program, inputs=(phase, last_output))
-    computer.execute(quiet=True)
-    last_output = computer.last_output
-
-  thruster_signal = last_output
-  return thruster_signal
-
-# -----------------------------------------------
-
-def try_sequence_part2(phase_settings, program):
-
-  computers = {}
-  for i,name in enumerate(["A", "B", "C", "D", "E"]):
-    computers[name] = IntcodeComputer(program, inputs=[phase_settings[i]])
-
-  last_output = 0
-  finished = False
-  while not finished:
-    for name in ["A", "B", "C", "D", "E"]:
-      computer = computers[name]
-      computer.inputs.put(last_output)
-      computer.execute(pause_on_output=True, quiet=True)
-      last_output = computer.last_output
-      if name == "E" and computer.halted:
-        finished = True
-
-  thruster_signal = last_output
-  return thruster_signal
-
-# -----------------------------------------------
-
-# Yields all permutations of elems sequentially
-def permutations(elems):
-  if len(elems) <= 1:
-    yield elems
-  else:
-    for perm in permutations(elems[1:]):
-      for i in range(len(perm)+1):
-        yield perm[:i] + elems[0:1] + perm[i:]
 
 # ========================================================
 
 with open(sys.argv[1]) as f:
   program = [int(x) for x in f.readline().split(",")]
 
-# Part 1
-
+# Part 1: run with input = 1
+# Part 2: run with input = 2
 computer = IntcodeComputer(program)
 computer.execute()
