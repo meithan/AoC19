@@ -64,15 +64,15 @@ with open(sys.argv[1]) as f:
 segments1 = gen_segments(wires[0])
 segments2 = gen_segments(wires[1])
 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
-xs = [seg.x1 for seg in segments1] + [segments1[-1].x2]
-ys = [seg.y1 for seg in segments1] + [segments1[-1].y2]
-plt.plot(xs, ys)
-xs = [seg.x1 for seg in segments2] + [segments2[-1].x2]
-ys = [seg.y1 for seg in segments2] + [segments2[-1].y2]
-plt.plot(xs, ys)
-plt.gca().set_aspect("equal")
+#xs = [seg.x1 for seg in segments1] + [segments1[-1].x2]
+#ys = [seg.y1 for seg in segments1] + [segments1[-1].y2]
+#plt.plot(xs, ys)
+#xs = [seg.x1 for seg in segments2] + [segments2[-1].x2]
+#ys = [seg.y1 for seg in segments2] + [segments2[-1].y2]
+#plt.plot(xs, ys)
+#plt.gca().set_aspect("equal")
 
 closest_inter = None
 closest_dist = None
@@ -97,16 +97,16 @@ for seg1 in segments1:
         fastest_steps = tot_steps
         fastest_inter = inter
 
-      plt.scatter([inter[0]], [inter[1]], marker="o", color="k", fc="none", zorder=10)
-      print(inter, dist, tot_steps)
+      #plt.scatter([inter[0]], [inter[1]], marker="o", color="k", fc="none", zorder=10)
+      #print(inter, dist, tot_steps)
     # print(seg1, seg2)
 
-plt.scatter([closest_inter[0]], [closest_inter[1]], s=200, marker="x", color="r", zorder=-10)
-plt.scatter([fastest_inter[0]], [fastest_inter[1]], s=200, marker="x", color="g", zorder=-10)
+#plt.scatter([closest_inter[0]], [closest_inter[1]], s=200, marker="x", color="r", zorder=-10)
+#plt.scatter([fastest_inter[0]], [fastest_inter[1]], s=200, marker="x", color="g", zorder=-10)
 
 print(f"Part 1: {closest_dist}")
 print(f"Part 1: {fastest_steps}")
 
-plt.plot([0], [0], "ko")
-plt.tight_layout()
-plt.show()
+#plt.plot([0], [0], "ko")
+#plt.tight_layout()
+#plt.show()

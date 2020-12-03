@@ -13,6 +13,7 @@ def compute_fuel_part2(mass):
     mass = fuel
   return tot_fuel
 
+# Load input
 masses = []
 with open("day1.in") as f:
   for line in f:
@@ -22,5 +23,6 @@ with open("day1.in") as f:
 total_fuel_1 = sum([compute_fuel(m) for m in masses])
 print(f"Part 1: {total_fuel_1}")
 
+# Part 2
 total_fuel_2 = sum([compute_fuel_part2(m) for m in masses])
 print(f"Part 2: {total_fuel_2}")
