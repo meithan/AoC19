@@ -26,7 +26,7 @@ class IntcodeComputer:
         params[i] = self.memory[self.relbase + params[i]]
     return params
 
-  def execute(self, quiet=False, pause_on_output=False):
+  def execute(self, quiet=False, pause_on_output=False, pause_on_input=True):
 
     while True:
 
